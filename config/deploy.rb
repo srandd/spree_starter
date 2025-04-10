@@ -2,7 +2,7 @@
 
 require 'mina/rails'
 require 'mina/git'
-require 'mina/rbenv' # for rbenv support. (https://rbenv.org)
+#require 'mina/rbenv' # for rbenv support. (https://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
 # Basic settings:
@@ -16,7 +16,7 @@ set :domain, '192.168.1.242'
 set :deploy_to, '/home/jeromes/nitrites.net'
 set :repository, '192.168.1.173:/home/jeromes/spree_starter.git'
 set :branch, 'jeromes'
-set :rbenv_use_path, '/home/jeromes/.rbenv/bin'
+#set :rbenv_use_path, '/home/jeromes/.rbenv/bin'
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
@@ -34,7 +34,7 @@ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/
 task :remote_environment do
   # If you're using rbenv, use this to load the rbenv environment.
   # Be sure to commit your .ruby-version or .rbenv-version to your repository.
-  invoke :'rbenv:load'
+  #invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use', 'ruby-2.5.3@default'
