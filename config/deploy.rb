@@ -46,7 +46,7 @@ task :setup do
   # command %{rvm install ruby-2.5.3}
   # command %{gem install bundler}
   in_path(fetch(:shared_path)) do
-    command %(mkdir -p config)
+    # command %(mkdir -p config)
 
     # Create database.yml for Postgres if it doesn't exist
     #    path_database_yml = "config/database.yml"
@@ -58,12 +58,12 @@ task :setup do
     #    command %[test -e #{path_database_yml} || echo "#{database_yml}" > #{path_database_yml}]
 
     # Create secrets.yml if it doesn't exist
-    path_secrets_yml = 'config/secrets.yml'
-    secrets_yml = %(production:\n  secret_key_base:\n    #{`bundle exec rails secret`.strip})
-    command %(test -e #{path_secrets_yml} || echo "#{secrets_yml}" > #{path_secrets_yml})
+    # path_secrets_yml = 'config/secrets.yml'
+    # secrets_yml = %(production:\n  secret_key_base:\n    #{`bundle exec rails secret`.strip})
+    # command %(test -e #{path_secrets_yml} || echo "#{secrets_yml}" > #{path_secrets_yml})
 
     # Remove others-permission for config directory
-    command %(chmod -R o-rwx config)
+    # command %(chmod -R o-rwx config)
   end
 end
 
