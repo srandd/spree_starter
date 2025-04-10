@@ -16,6 +16,7 @@ set :domain, '192.168.1.242'
 set :deploy_to, '/home/jeromes/nitrites.net'
 set :repository, '192.168.1.173:/home/jeromes/spree_starter.git'
 set :branch, 'jeromes'
+set :rbenv_use_path, '/home/jeromes/.rbenv/bin'
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
