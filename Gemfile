@@ -75,7 +75,10 @@ group :development do
 end
 
 group :development, :test do
+  # Use the Puma web server [https://github.com/puma/puma]
   gem 'brakeman'
+  gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
+  gem 'puma', '>= 5.0'
   gem 'rubocop', '~> 1.23.0'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
@@ -92,21 +95,21 @@ end
 group :test do
   gem 'capybara', '~> 3.39'
   gem 'capybara-screenshot', '~> 1.0'
+  gem 'database_cleaner'
   gem 'email_spec'
   gem 'factory_bot'
   gem 'factory_bot_rails'
-  gem 'database_cleaner'
+  gem 'jsonapi-rspec'
+  gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks', '~> 1.0'
+  gem 'rspec_junit_formatter'
   gem 'rspec-rails', '~> 6.1'
   gem 'rspec-retry'
-  gem 'rspec_junit_formatter'
   gem 'rubocop-rspec'
-  gem 'jsonapi-rspec'
   gem 'simplecov'
-  gem 'webmock', '~> 3.7', require: false
   gem 'timecop'
-  gem 'rails-controller-testing'
   gem 'webdrivers', '~> 5.0'
+  gem 'webmock', '~> 3.7', require: false
 end
 
 # Use Sidekiq for background jobs
