@@ -1,0 +1,39 @@
+<%= render 'header' %>
+<%= render_admin_partials(:order_page_header_partials, order: @order) %>
+
+<div class="container px-0">
+  <div class="row">
+    <div class="col-lg-8">
+      <%= render 'line_items' %>
+      <%= render 'shipments' %>
+      <%= render 'customer_returns' %>
+      <%= render 'return_authorizations' %>
+      <%= render 'payments'%>
+      <%= render 'refunds'%>
+      <%= render_admin_partials(:order_page_body_partials, order: @order) %>
+      <%= render 'summary' %>
+    </div>
+    <div class="col-lg-4">
+      <%= render 'customer' %>
+      <%= render_admin_partials(:order_page_sidebar_partials, order: @order) %>
+    </div>
+  </div>
+</div>
+<%
+@shipment = Spree::Shipment.find_by!(order_id: @order.id)
+%>
+<% if @shipment.state == "ready" && @shipment.tracking.nil? then %>
+<form method="post" action="/shippo/<%= @shipment.id %>">
+  <input type="hidden" name="id" value="<%= @shipment.id %>" />
+  <button name="submit_button" type="submit" class="btn btn-info">Send to shippo</button>
+</form>
+<% elsif @order.payment_state == "balance_due" %>
+  <button name="button" class="btn btn-danger">Order has not been paid for yet</button>
+<% elsif @shipment.tracking.nil? %>
+  <form method="post" action="/shippo/<%= @shipment.id %>">
+    <input type="hidden" name="id" value="<%= @shipment.id %>" />
+    <button name="submit_button" type="submit" class="btn btn-warning">Send to shippo ?again? (no tracking number)</button>
+  </form>
+<% else %>
+  <button name="button" class="btn btn-danger">Shipment state is currently <%= @shipment.state %>. Order is in <%= @order.payment_state %></button>
+<% end %>

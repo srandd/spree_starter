@@ -19,17 +19,18 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development: &development
+development:
   <<: *default
-  database: spree_starter_development
-  host: <%= ENV.fetch('DB_HOST', 'localhost') %>
-  username: <%= ENV.fetch('DB_USER', 'postgres') %>
-  password: <%= ENV.fetch('DB_PASSWORD', 'password') %>
-  port: <%= ENV.fetch('DB_PORT', 5432) %>
-  # On MacOS some users are reporting crashes when first trying to access
-  # the database. This workaround was suggested in this issue on `ruby-pg`:
-  # https://github.com/ged/ruby-pg/issues/538
-  gssencmode: disable
+  url: <%= ENV['DEV_DATABASE_URL'] %>
+  #database: "dev_nitrites_net"
+  #host: "localhost"
+  #username: "jeromes"
+  #password: "winshock"
+  #port: "5432"
+  ## On MacOS some users are reporting crashes when first trying to access
+  ## the database. This workaround was suggested in this issue on `ruby-pg`:
+  ## https://github.com/ged/ruby-pg/issues/538
+  #gssencmode: disable
 
 
   # The specified database role being used to connect to PostgreSQL.
@@ -64,11 +65,11 @@ development: &development
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: spree_starter_test
-  host: <%= ENV.fetch('DB_HOST', 'localhost') %>
-  username: <%= ENV.fetch('DB_USER', 'postgres') %>
-  password: <%= ENV.fetch('DB_PASSWORD', 'password') %>
-  port: <%= ENV.fetch('DB_PORT', 5432) %>
+  database: test_nitrites_net
+  host: "localhost"
+  username: "jeromes"
+  password: "winshock"
+  port: "5432"
   # On MacOS some users are reporting crashes when first trying to access
   # the database. This workaround was suggested in this issue on `ruby-pg`:
   # https://github.com/ged/ruby-pg/issues/538
