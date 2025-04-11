@@ -75,10 +75,7 @@ group :development do
 end
 
 group :development, :test do
-  # Use the Puma web server [https://github.com/puma/puma]
   gem 'brakeman'
-  gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
-  gem 'puma', '>= 5.0'
   gem 'rubocop', '~> 1.23.0'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
