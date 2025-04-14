@@ -117,13 +117,13 @@ gem 'devise'
 
 # Spree gems
 spree_opts = '~> 5.0.0'
-gem 'spree', spree_opts
-gem 'spree_admin', spree_opts
-gem 'spree_emails', spree_opts
-gem 'spree_i18n'
-gem 'spree_sample', spree_opts
-gem 'spree_storefront', spree_opts
-gem 'spree_stripe', '~> 1.1.0'
+gem "spree", spree_opts
+gem "spree_emails", spree_opts
+gem "spree_sample", spree_opts
+gem "spree_admin", spree_opts
+gem "spree_storefront", spree_opts
+gem "spree_stripe", '~> 1.2.0'
+gem "spree_i18n"
 
 group :production do
   gem 'passenger', '>= 5.3.2', require: 'phusion_passenger/rack_handler'
